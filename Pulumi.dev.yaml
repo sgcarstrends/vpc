@@ -1,0 +1,2 @@
+config:
+  sgcarstrends-vpc:AWS_REGION: ap-southeast-1

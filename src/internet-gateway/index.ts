@@ -1,10 +1,10 @@
 import * as aws from "@pulumi/aws";
-import { projectName } from "../../config";
+import { PROJECT_NAME } from "../../config";
 
 export const createInternetGateway = (vpc: aws.ec2.Vpc) =>
-  new aws.ec2.InternetGateway(`${projectName}-internet-gateway`, {
+  new aws.ec2.InternetGateway(`${PROJECT_NAME}-internet-gateway`, {
     vpcId: vpc.id,
     tags: {
-      Name: `${projectName}-internet-gateway`,
+      Name: `${PROJECT_NAME}-internet-gateway`,
     },
   });

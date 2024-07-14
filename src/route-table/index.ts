@@ -1,5 +1,5 @@
 import * as aws from "@pulumi/aws";
-import { projectName } from "../../config";
+import { PROJECT_NAME } from "../../config";
 
 export const createRouteTableAndAssociations = (
   vpc: aws.ec2.Vpc,
@@ -7,7 +7,7 @@ export const createRouteTableAndAssociations = (
   subnetA: aws.ec2.Subnet,
   subnetB: aws.ec2.Subnet,
 ) => {
-  const routeTable = new aws.ec2.RouteTable(`${projectName}-route-table`, {
+  const routeTable = new aws.ec2.RouteTable(`${PROJECT_NAME}-route-table`, {
     vpcId: vpc.id,
     routes: [
       {
@@ -16,16 +16,16 @@ export const createRouteTableAndAssociations = (
       },
     ],
     tags: {
-      Name: `${projectName}-route-table`,
+      Name: `${PROJECT_NAME}-route-table`,
     },
   });
 
-  new aws.ec2.RouteTableAssociation(`${projectName}-rta-subnetA`, {
+  new aws.ec2.RouteTableAssociation(`${PROJECT_NAME}-rta-subnetA`, {
     subnetId: subnetA.id,
     routeTableId: routeTable.id,
   });
 
-  new aws.ec2.RouteTableAssociation(`${projectName}-rta-subnetB`, {
+  new aws.ec2.RouteTableAssociation(`${PROJECT_NAME}-rta-subnetB`, {
     subnetId: subnetB.id,
     routeTableId: routeTable.id,
   });

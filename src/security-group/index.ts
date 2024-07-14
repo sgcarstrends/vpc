@@ -1,8 +1,8 @@
 import * as aws from "@pulumi/aws";
-import { projectName } from "../../config";
+import { PROJECT_NAME } from "../../config";
 
 export const createSecurityGroup = (vpc: aws.ec2.Vpc) =>
-  new aws.ec2.SecurityGroup(`${projectName}-security-group`, {
+  new aws.ec2.SecurityGroup(`${PROJECT_NAME}-security-group`, {
     description: "Security group",
     vpcId: vpc.id,
     ingress: [
@@ -22,6 +22,6 @@ export const createSecurityGroup = (vpc: aws.ec2.Vpc) =>
       },
     ],
     tags: {
-      Name: `${projectName}-security-group`,
+      Name: `${PROJECT_NAME}-security-group`,
     },
   });
